@@ -1,0 +1,38 @@
+{
+  "name": "react-everything",
+  "version": "1.0.0",
+  "description": "All about React",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "prod-start": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApuroopK10/React-Everything.git"
+  },
+  "keywords": [
+    "React",
+    "All",
+    "about",
+    "React",
+    "Everything"
+  ],
+  "author": "Apuroop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ApuroopK10/React-Everything/issues"
+  },
+  "homepage": "https://github.com/ApuroopK10/React-Everything#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 version"
+  ]
+}
