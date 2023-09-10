@@ -22,11 +22,9 @@ const Body = () => {
     );
   };
 
-  if (resListArr.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  return resListArr.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
