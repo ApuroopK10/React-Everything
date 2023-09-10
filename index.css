@@ -45,7 +45,7 @@
 }
 
 .filter-btn {
-    margin: 10px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
@@ -69,4 +69,9 @@
 .login {
     padding: 0 20px;
     cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    margin: 10px;
 }

@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [resListArr, setResListArr] = useState([]);
+  const [originalRestArr, setOriginalRestArr] = useState([]);
+  const [resListFiltered, setResListFiltered] = useState([]);
+
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -13,31 +16,58 @@ const Body = () => {
   const fetchData = async () => {
     const response = await fetch(DATA_API);
     const respData = await response.json();
-    setResListArr(
-      respData?.data?.cards
-        .find((card) => card?.card?.card?.id === "top_brands_for_you")
-        .card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
-          (resto) => resto.info
-        )
-    );
+    const finalRespData = respData?.data?.cards
+      .find((card) => card?.card?.card?.id === "top_brands_for_you")
+      .card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
+        (resto) => resto.info
+      );
+    setResListFiltered(finalRespData);
+    setOriginalRestArr(finalRespData);
   };
 
-  return resListArr.length === 0 ? (
+  return resListFiltered.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(event) => {
+              setSearchText(event.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              if (searchText.trim().length === 0) {
+                setResListFiltered(originalRestArr);
+                return;
+              }
+              setResListFiltered(
+                originalRestArr.filter((rest) =>
+                  rest.name.toLowerCase().includes(searchText.toLowerCase())
+                )
+              );
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
-            setResListArr(resListArr.filter((resto) => resto.avgRating > 4));
+            setResListFiltered(
+              resListFiltered.filter((resto) => resto.avgRating > 4)
+            );
           }}
         >
           Top Rated
         </button>
       </div>
       <div className="resto-container">
-        {resListArr.map((restaurant) => (
+        {resListFiltered.map((restaurant) => (
           <RestaurantCard key={restaurant.id} resData={restaurant} />
         ))}
       </div>
