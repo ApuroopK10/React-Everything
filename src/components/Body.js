@@ -30,7 +30,7 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            setResListArr(resList.filter((resto) => resto.avgRating > 4));
+            setResListArr(resListArr.filter((resto) => resto.avgRating > 4));
           }}
         >
           Top Rated
