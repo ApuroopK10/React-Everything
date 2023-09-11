@@ -2,6 +2,7 @@ import { DATA_API } from "../utils/constants";
 import { RestaurantCard } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [originalRestArr, setOriginalRestArr] = useState([]);
@@ -23,6 +24,7 @@ const Body = () => {
       );
     setResListFiltered(finalRespData);
     setOriginalRestArr(finalRespData);
+    console.log(finalRespData);
   };
 
   return resListFiltered.length === 0 ? (
@@ -68,7 +70,9 @@ const Body = () => {
       </div>
       <div className="resto-container">
         {resListFiltered.map((restaurant) => (
-          <RestaurantCard key={restaurant.id} resData={restaurant} />
+          <Link to={"/restaurants/" + restaurant.id} key={restaurant.id}>
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
