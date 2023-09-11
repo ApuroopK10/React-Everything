@@ -3,7 +3,6 @@ import Body from "./Body";
 import { Outlet } from "react-router-dom";
 
 export const AppLayout = () => {
-  console.log("Virtual DOM", <Body />);
   return (
     <div className="app">
       <Header />
