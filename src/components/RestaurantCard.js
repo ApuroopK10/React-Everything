@@ -19,3 +19,20 @@ export const RestaurantCard = ({
     </div>
   );
 };
+
+// Higher Order Component
+export const withOffersLabel = (RestaurantCard) => {
+  // HOC is a func at the EoD
+  return (props) => {
+    // HOC always returns a Cmp, which is also func at EoD
+    return (
+      // a React Cmp always returns some JSX
+      <div>
+        <label className="text-white relative top-9 bg-black p-1 ml-4">
+          Offers
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};

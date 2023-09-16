@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withOffersLabel } from "./RestaurantCard";
 
 const Body = () => {
   const [originalRestArr, setOriginalRestArr] = useState([]);
   const [resListFiltered, setResListFiltered] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantOffersCard = withOffersLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -83,7 +86,11 @@ const Body = () => {
       <div className="flex flex-wrap">
         {resListFiltered.map((restaurant) => (
           <Link to={"/restaurants/" + restaurant.id} key={restaurant.id}>
-            <RestaurantCard resData={restaurant} />
+            {restaurant.aggregatedDiscountInfoV3 ? (
+              <RestaurantOffersCard resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
