@@ -1,11 +1,8 @@
-import { useState } from "react";
 import MenuItems from "./MenuItems";
 
-const RestaurantCategory = ({ data }) => {
-  const [accExpanded, setAccExpanded] = useState(false);
-
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const toggleAccordion = () => {
-    setAccExpanded(!accExpanded);
+    setShowIndex();
   };
   return (
     <div className="text-white">
@@ -17,9 +14,9 @@ const RestaurantCategory = ({ data }) => {
           <span className="font-bold text-lg">
             {data?.title} ({data?.itemCards?.length})
           </span>
-          <span className="text-white">{accExpanded ? "⬆" : "⬇"}</span>
+          <span className="text-white">{showItems ? "⬆" : "⬇"}</span>
         </div>
-        {accExpanded ? <MenuItems items={data?.itemCards} /> : <></>}
+        {showItems ? <MenuItems items={data?.itemCards} /> : <></>}
       </div>
     </div>
   );
