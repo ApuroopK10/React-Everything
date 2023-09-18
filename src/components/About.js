@@ -1,3 +1,4 @@
+import UserContext from "../utils/userContext";
 import UserClass from "./UserClass";
 import { Component } from "react";
 
@@ -10,13 +11,15 @@ class About extends Component {
 
   render() {
     return (
-      <div>
+      <div className="text-red-700">
         <h1>About</h1>
-        <h2>
-          Hunger games is all about facilitating users with multiple cuisines,
-          reachable on the click of a button.
-        </h2>
-        <User name="Apuroop" location="Hyderabad" />
+        <div>
+          <UserContext.Consumer>
+            {({ loggedInUser }) => {
+              return <h1>LoggedInUser: {loggedInUser}</h1>;
+            }}
+          </UserContext.Consumer>
+        </div>
       </div>
     );
   }
