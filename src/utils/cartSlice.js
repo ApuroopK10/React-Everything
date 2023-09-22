@@ -17,7 +17,6 @@ const cartSlice = createSlice({
       console.log(state);
       console.log(current(state));
       state.items = [];
-      //   state = [] - This will not work
     },
   },
 });
