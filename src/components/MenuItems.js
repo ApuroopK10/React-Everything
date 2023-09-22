@@ -1,9 +1,16 @@
 import React from "react";
 import { CDN_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
-const MenuItems = ({ items }) => {
+const MenuItems = ({ items, textRed = "text-white" }) => {
+  const dispatch = useDispatch();
+  const addItemHandler = (item) => {
+    // addItem argument is the action.payload
+    dispatch(addItem(item));
+  };
   return (
-    <div className="text-white">
+    <div className={textRed || "text-white"}>
       {items.map((item) => (
         <div
           key={item?.card?.info?.id}
@@ -20,7 +27,10 @@ const MenuItems = ({ items }) => {
                 src={CDN_URL + item?.card?.info?.imageId}
                 className="w-[118px] h-24 rounded-md"
               />
-              <button className="text-green-700 font-bold p-1 px-4 bg-white shadow-lg relative bottom-6 left-6 rounded-md">
+              <button
+                onClick={() => addItemHandler(item)}
+                className="text-green-700 font-bold p-1 px-4 bg-white shadow-lg relative bottom-6 left-6 rounded-md"
+              >
                 Add +
               </button>
             </div>
