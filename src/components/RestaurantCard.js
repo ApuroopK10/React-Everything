@@ -4,7 +4,10 @@ export const RestaurantCard = ({
   resData: { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId },
 }) => {
   return (
-    <div className="m-4 p-4 w-[220px] bg-red-700 rounded-lg hover:bg-red-400">
+    <div
+      data-testid="restoCard"
+      className="m-4 p-4 w-[220px] bg-red-700 rounded-lg hover:bg-red-400"
+    >
       <img
         className="rounded-lg"
         height="188"

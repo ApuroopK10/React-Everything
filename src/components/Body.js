@@ -27,7 +27,6 @@ const Body = () => {
       );
     setResListFiltered(finalRespData);
     setOriginalRestArr(finalRespData);
-    console.log(finalRespData);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -49,6 +48,7 @@ const Body = () => {
           <input
             type="text"
             className="border-solid border-red-700 border-2"
+            data-testid="searchInput"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
