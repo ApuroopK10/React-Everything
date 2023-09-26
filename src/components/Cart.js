@@ -12,7 +12,6 @@ const Cart = () => {
   const clearCartItems = () => {
     dispatch(clearCart());
   };
-  console.log(cartItems, "cartItems");
   return (
     <div className="text-red-700 text-center my-7 p-7 w-7/12 m-auto">
       <div className="flex justify-between px-4">
@@ -25,8 +24,11 @@ const Cart = () => {
         </button>
       </div>
       <div className="">
-        {cartItems.length === 0 && <h1>Cart is empty, Resume shopping</h1>}
-        <MenuItems items={cartItems} textRed="text-red-700" />
+        {cartItems.length === 0 ? (
+          <h1>Cart is empty, Resume shopping</h1>
+        ) : (
+          <MenuItems items={cartItems} textRed="text-red-700" />
+        )}
       </div>
     </div>
   );

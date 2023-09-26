@@ -5,7 +5,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
     setShowIndex();
   };
   return (
-    <div className="text-white">
+    <div className="text-white" data-testid="accHeader">
       <div className="w-6/12 bg-red-700 shadow-2xl p-4 mx-auto flex flex-col justify-between px-2 my-2">
         <div
           className="flex justify-between cursor-pointer"

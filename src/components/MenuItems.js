@@ -13,6 +13,7 @@ const MenuItems = ({ items, textRed = "text-white" }) => {
     <div className={textRed || "text-white"}>
       {items.map((item) => (
         <div
+          data-testid="foodItems"
           key={item?.card?.info?.id}
           className="m-2 border-white border-b text-left"
         >
@@ -29,6 +30,7 @@ const MenuItems = ({ items, textRed = "text-white" }) => {
               />
               <button
                 onClick={() => addItemHandler(item)}
+                data-testid="addToCart"
                 className="text-green-700 font-bold p-1 px-4 bg-white shadow-lg relative bottom-6 left-6 rounded-md"
               >
                 Add +
