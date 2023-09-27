@@ -16,7 +16,7 @@ global.fetch = jest.fn(() => {
   });
 });
 
-it("should load RestaurantMenu cmp", async () => {
+it("should test AddToCart feature", async () => {
   await act(async () =>
     render(
       <BrowserRouter>
@@ -33,4 +33,12 @@ it("should load RestaurantMenu cmp", async () => {
   fireEvent.click(accordionHeader[0]);
   const foodItems = screen.getAllByTestId("foodItems");
   expect(foodItems.length).toBe(6);
+
+  const addBtns = screen.getAllByTestId("addToCart");
+  fireEvent.click(addBtns[0]);
+  const cartItems = screen.getByTestId("1 items");
+  expect(cartItems).toBeInTheDocument();
+  expect(screen.getAllByTestId("foodItems").length).toBe(7);
+  fireEvent.click(screen.getByRole("button", { name: "Clear Cart" }));
+  expect(screen.getAllByTestId("foodItems").length).toBe(6);
 });
