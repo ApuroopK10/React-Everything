@@ -1,21 +1,6 @@
-All about React
+A React based Food delivery app, that uses Tailwind, Live APIs with realtime restaurant data, Redux.
 
 # Parcel
 
-- used as build tool for the app.
+- used as the build tool for the app.
 
-# Food ordering app structure
-
-- Header
-- - Logo
-- - Nav links
-- Body
-- - Search
-- - RestarauntCOntainer
-- - RestaurantCard
--      - Name of Resto, Img, Rating, Cuisines
-- Footer
-- - Copyright
-- - Links
-- - Address
-- - Contact
